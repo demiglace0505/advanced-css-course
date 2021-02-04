@@ -349,3 +349,34 @@ To use:
      orangered 50%),
 ```
 
+##### How to create boxes with equal height using `display: table-cell`:
+
+```scss
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: table;
+}
+
+.left {
+    width: 33.3333%
+    display: table-cell;
+}
+
+.right {
+    width: 66.6667%;
+    display: table-cell;
+}
+```
+
+##### How to create CSS text columns
+
+```
+column-count: 2;
+column-gap: 4rem;
+column-rule: 1px solid gray;
+hyphens: auto;
+```
+
