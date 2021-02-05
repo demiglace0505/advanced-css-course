@@ -380,3 +380,95 @@ column-rule: 1px solid gray;
 hyphens: auto;
 ```
 
+##### Writing a Sass mixin for all media queries using if directives
+
+```scss
+//media query manager
+/*
+0-600px phone
+600-900px tab portrait
+900-1200px tab landscape
+1200-1800 normal styles (desktop first)
+1800+ big desktop
+
+$breakpoint argument choices:
+phone
+tab-port
+tab-land
+big-desktop
+
+1em = 16px
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) { @content }; //600px
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) { @content }; //900px
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) { @content }; //1200px
+  }
+  @if $breakpoint == big-desktop {
+    @media (min-width: 112.5em) { @content }; //1800px
+  }
+}
+```
+
+applying to html document's font size:
+
+```scss
+html {
+    // This defines what 1rem is (default 16px)
+    font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+
+    @include respond(tab-land) { // width < 1200?
+        font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+    }
+
+    @include respond(tab-port) { // width < 900?
+        font-size: 50%; //1 rem = 8px, 8/16 = 50%
+    }
+    
+    @include respond(big-desktop) {
+        font-size: 75%; //1rem = 12, 12/16
+    }
+}
+```
+
+##### How to perform density switching using srcset attribute with density descriptors:
+
+```html
+<img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+```
+
+##### How to perform art direction according to screen width:
+
+In case the viewport width is smaller than 37.5em, the image used will be the one from source. Inside each srcset is density switching according to screen resolution.
+
+```html
+<picture class="footer__logo">
+  <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
+  <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo">
+</picture>
+```
+
+##### How to perform resolution switching using width descriptors:
+
+```html
+<img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w" sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px">
+```
+
+##### How to implement responsive images in CSS:
+
+```scss
+  @media (min-res: 192dpi) { // apple retina screen
+    background-image: linear-gradient(
+    to right bottom,
+    rgba($color-primary-light, 0.801),
+     rgba($color-primary-dark, 0.801))
+     , url(../img/hiresimg.jpg);
+  }
+```
+
