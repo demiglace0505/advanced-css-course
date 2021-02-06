@@ -462,13 +462,17 @@ In case the viewport width is smaller than 37.5em, the image used will be the on
 
 ##### How to implement responsive images in CSS:
 
+Note that comma acts like an OR operator. 192 dpi is apple retina screen
+
+37.5em = 600px / 16, 125em = 2000px / 16
+
 ```scss
-  @media (min-res: 192dpi) { // apple retina screen
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) { 
     background-image: linear-gradient(
     to right bottom,
     rgba($color-primary-light, 0.801),
-     rgba($color-primary-dark, 0.801))
-     , url(../img/hiresimg.jpg);
+    rgba($color-primary-dark, 0.801)), 
+    url(../img/hiresimg.jpg);
   }
 ```
 
