@@ -8,7 +8,7 @@
 }
 ```
 
-##### How to set project-wide font definitions:
+##### How to set project-wide font definitions and selection style:
 
 ```css
 body {
@@ -17,6 +17,11 @@ body {
   font-size: 16px;
   line-height: 1.7;
   color: #777777;
+}
+
+::selection {
+  background-color: green;
+  color: white;
 }
 ```
 
