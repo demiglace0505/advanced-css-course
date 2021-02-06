@@ -378,7 +378,7 @@ To use:
 
 ##### How to create CSS text columns
 
-```
+```scss
 column-count: 2;
 column-gap: 4rem;
 column-rule: 1px solid gray;
@@ -407,16 +407,16 @@ big-desktop
 
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {
-    @media (max-width: 37.5em) { @content }; //600px
+    @media only screen and (max-width: 37.5em) { @content }; //600px
   }
   @if $breakpoint == tab-port {
-    @media (max-width: 56.25em) { @content }; //900px
+    @media only screen and (max-width: 56.25em) { @content }; //900px
   }
   @if $breakpoint == tab-land {
-    @media (max-width: 75em) { @content }; //1200px
+    @media only screen and (max-width: 75em) { @content }; //1200px
   }
   @if $breakpoint == big-desktop {
-    @media (min-width: 112.5em) { @content }; //1800px
+    @media only screen and (min-width: 112.5em) { @content }; //1800px
   }
 }
 ```
