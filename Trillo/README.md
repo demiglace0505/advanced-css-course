@@ -83,3 +83,31 @@ Resource: icomoon
 }
 ```
 
+##### How to use `flex-wrap` to build a multicolumn list:
+
+```scss
+.list {
+  list-style: none;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    flex: 0 0 50%;
+  }
+}
+```
+
+##### How to use image in CSS using masks with `mask-mage` and `mask-size`:
+
+```
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: .7rem;
+    
+	background-color: red;
+    -webkit-mask-image: url(../img/chevron-thin-right.svg);
+    -webkit-mask-size: cover;
+```
+
