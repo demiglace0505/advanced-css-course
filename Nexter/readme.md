@@ -92,3 +92,23 @@
 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 ```
 
+##### How to make an image occupy the entire cell using `object-fit`:
+
+```html
+<figure class="gallery__item gallery__item--1">
+  <img src="img/gal-1.jpeg" alt="Gallery image 1" class="gallery__img">
+</figure>
+```
+
+```scss
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+```
+
+##### Vertical spacing in a responsive layout using CSS grid:
+
+##### Using `::before` and `::after` pseudo-elements as grid items.
